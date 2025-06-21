@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hồng có yêu anh không?</title>
+  <title>Hãy giúp anh trả lời câu hỏi này nhé!</title>
   <style>
     html, body {
       margin: 0;
@@ -125,9 +125,7 @@
       overlay.style.display = "flex";
     });
 
-    noBtn.addEventListener("touchstart", moveNo);
-    noBtn.addEventListener("mouseover", moveNo);
-
+    // Né chuột và né chạm
     function moveNo() {
       const maxX = window.innerWidth - noBtn.offsetWidth;
       const maxY = window.innerHeight - noBtn.offsetHeight;
@@ -137,7 +135,10 @@
       noBtn.style.top = `${randomY}px`;
     }
 
-    // Vị trí ban đầu của "Không"
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+    // Vị trí ban đầu cho nút "Không"
     window.onload = () => {
       noBtn.style.left = "60%";
       noBtn.style.top = "60%";
