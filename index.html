@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hồng có yêu anh không?</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f0, #ffd6e8);
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #e60073;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px #fff;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      margin: 1rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #yesBtn {
+      background-color: #ff4da6;
+      color: white;
+      font-weight: bold;
+    }
+
+    #noBtn {
+      background-color: #fff;
+      color: #e60073;
+      border: 2px solid #e60073;
+      font-weight: bold;
+      position: absolute;
+      z-index: 5;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    #popup {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      animation: popupFadeIn 0.4s ease-out;
+      max-width: 90%;
+    }
+
+    @keyframes popupFadeIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    #popup h2 {
+      color: #e60073;
+      margin-bottom: 10px;
+    }
+
+    #popup p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .heart-icon {
+      font-size: 1.3rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Hồng có yêu anh không? 💖</h1>
+
+  <button id="yesBtn" class="btn">
+    <span class="heart-icon">❤️</span> Có
+  </button>
+  <button id="noBtn" class="btn">
+    <span class="heart-icon">💔</span> Không
+  </button>
+
+  <div id="overlay">
+    <div id="popup">
+      <h2>🥰 Cảm ơn em!</h2>
+      <p>Anh cũng yêu em rất nhiều ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const overlay = document.getElementById("overlay");
+
+    yesBtn.addEventListener("click", () => {
+      overlay.style.display = "flex";
+    });
+
+    noBtn.addEventListener("touchstart", moveNo);
+    noBtn.addEventListener("mouseover", moveNo);
+
+    function moveNo() {
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    }
+
+    // Vị trí ban đầu của "Không"
+    window.onload = () => {
+      noBtn.style.left = "60%";
+      noBtn.style.top = "60%";
+    };
+  </script>
+</body>
+</html>
